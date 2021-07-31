@@ -34,4 +34,21 @@ router.delete('/:id', (req,res) => {
         res.send(`user with id: ${id} deleted`);
 })
 
+router.patch('/:id', (req,res) => {
+    const {id} = req.params;
+    const {name, surname, major} = req.body;
+    const user = users.find((user) => user.id === id);
+    if(name) {
+        user.name = name;
+    }
+    if(surname) {
+        user.surname = surname;
+    }
+    if(major) {
+        user.major = major;
+    }
+    res.send(`user with id ${id} is updated`)
+
+})
+
 export default router;
